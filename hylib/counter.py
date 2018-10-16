@@ -1,0 +1,73 @@
+#-*- coding: UTF-8 -*-
+
+from hybase import *
+
+class HYCounter(HYBase):
+    
+    cnt_list = {}
+
+    def cnt_dump(self, str=None):
+        total = 0
+        for key in self.cnt_list:
+            if str and key.find(str ) < 0:#我理解为去重统计
+                continue
+            total += 1
+            print "  %30s: %d" % (key, self.cnt_list[key])
+
+        print "%d counters found." % (total)
+
+    def cnt_add(self, name, value):
+        if name in self.cnt_list:
+           self.cnt_list[name] += value
+        else:
+           self.cnt_list[name] = value
+
+    def cnt_inc(self, name):
+        self.cnt_add(name, 1)
+
+    def cnt_set(self, name, value):
+        self.cnt_list[name] = value
+
+    def cnt_zero(self, name): #置0
+        self.cnt_set(name, 0)
+           
+    def cnt_get(self, name): #查询
+        if name in self.cnt_list:
+           return self.cnt_list[name]
+        else:
+           return -1
+
+    def cnt_clear(self):
+        for key in self.cnt_list:
+            self.cnt_zero(key)
+            
+    def help_counter(self):  
+        print "  counter clear"
+        print "     ---- Clear all counter"
+        print "  counter SUBSTR"
+        print "     ---- Show counter which name content SUBSTR"
+        print "  counter COUNTER VALUE"
+        print "     ---- Set COUNTER to VALUE, VALUE must be number"
+
+    def do_counter(self, line):  
+        argv = line.split()
+        argc = len(argv)
+
+        if argc == 0:
+            self.cnt_dump()
+        elif argc == 1:
+            if argv[0] == "clear":
+                self.cnt_clear()
+            else:
+                self.cnt_dump(argv[0])
+        elif argc == 2:
+            try:
+                value = int(argv[1])
+            except:
+                self.help_counter()
+
+            self.cnt_set(argv[0], value)
+        else:
+            self.help_counter()
+
+#End of file

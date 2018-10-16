@@ -1,0 +1,104 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="Python - Empty Project"
+    WorkingDir=".">
+    <Files>
+        <Folder
+            Name="Source Files"
+            Filters="*.py"
+            GUID="{3DA3B519-A101-4245-2409-1B9FB98191AD}">
+            <F N="douyu/__init__.py"/>
+            <F N="hylib/__init__.py"/>
+            <F N="douyu/char.py"/>
+            <F N="douyu/client.py"/>
+            <F N="hylib/command.py"/>
+            <F N="hylib/cookie.py"/>
+            <F N="hylib/cookie_test.py"/>
+            <F N="hylib/counter.py"/>
+            <F N="hylib/counter_test.py"/>
+            <F N="hylib/debug.py"/>
+            <F N="hylib/debug_test.py"/>
+            <F N="hylib/hybase.py"/>
+            <F N="hylib/hybase_test.py"/>
+            <F N="hylib/hyclass.py"/>
+            <F N="hylib/hyclass_test.py"/>
+            <F N="marbow.py"/>
+            <F N="marbow_cmd.py"/>
+            <F N="marbow_cmd_test.py"/>
+            <F N="marbow_db.py"/>
+            <F N="marbow_talk.py"/>
+            <F N="marbow_ttsx.py"/>
+            <F N="douyu/message.py"/>
+            <F N="douyu/msger.py"/>
+            <F N="douyu/packet.py"/>
+            <F N="tuling.py"/>
+            <F N="douyu/utils.py"/>
+        </Folder>
+        <Folder
+            Name="Other Files"
+            Filters=""
+            GUID="{8276380A-E736-4BB1-8309-80716CDCF1B3}"></Folder>
+    </Files>
+    <Config
+        Name="Debug"
+        DebugCallbackName="pydbgp"
+        Type="python"
+        OutputFile=""
+        AppType="python"
+        CompilerConfigName="">
+        <Menu>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_python_options_form Run"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw"
+                Deletable="0">
+                <Exec CmdLine='python %(SLICKEDIT_PYTHON_EXECUTE_ARGS) "%f"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_python_options_form Debug"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone"
+                RunFromDir="%rw"
+                Deletable="0">
+                <Exec
+                    CmdLine="python_debug"
+                    Type="Slick-C"/>
+            </Target>
+            <Target
+                Name="Python Options"
+                MenuCaption="Python &amp;Options"
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0">
+                <Exec
+                    CmdLine="pythonoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="Python Options">
+            <Item
+                Name="DefaultFile"
+                Value=""/>
+        </List>
+        <List Name="pydbgp Options">
+            <Item
+                Name="ServerHost"
+                Value="127.0.0.1"/>
+            <Item
+                Name="ServerPort"
+                Value="0"/>
+            <Item
+                Name="ListenInBackground"
+                Value="1"/>
+            <Item
+                Name="show_hidden"
+                Value="0"/>
+        </List>
+    </Config>
+</Project>
